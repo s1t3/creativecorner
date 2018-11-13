@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+
+		<title>Little Cute Turtle</title>
+
+		<script type='text/javascript' src='turtle3.js'></script>
+		<script src='turtle2.js' type='text/javascript' charset='utf-8'></script>
+		
+		<link type='text/css' rel='stylesheet' href='turtle.css' />
+
+	</head>
+<!-- ...................................................................... -->
+<body onload='executeCommands();'>
+
+	<h1>
+		 Cute Turtle Graphics
+		 <img src='turtle.jpeg' height='75px' style='vertical-align: bottom'>
+	</h1>
+
+
+<br>
+		
+
+	<div id='canvas' >
+			
+			<div class="menu hide">
+			<div class="menu__inner-wrap">
+				<div class="btn btn--bright close-menu-btn">
+					<svg fill="white" width="24" height="24"><use href="#icon-close" xlink:href="#icon-close"></use></svg>
+				</div>
+				<div class="menu__header">Settings</div>
+				<div class="menu__subheader">For more info, click any label.</div>
+				<form>
+					<div class="form-option form-option--select">
+						<label class="shell-type-label">Shell Type</label>
+						<select class="shell-type"></select>
+					</div>
+					<div class="form-option form-option--select">
+						<label class="shell-size-label">Shell Size</label>
+						<select class="shell-size"></select>
+					</div>
+					<div class="form-option form-option--select">
+						<label class="quality-ui-label">Quality</label>
+						<select class="quality-ui"></select>
+					</div>
+					<div class="form-option form-option--select">
+						<label class="sky-lighting-label">Sky Lighting</label>
+						<select class="sky-lighting"></select>
+					</div>
+					<div class="form-option form-option--select">
+						<label class="scaleFactor-label">Scale</label>
+						<select class="scaleFactor"></select>
+					</div>
+					<div class="form-option form-option--checkbox">
+						<label class="auto-launch-label">Auto Fire</label>
+						<input class="auto-launch" type="checkbox" />
+					</div>
+					<div class="form-option form-option--checkbox form-option--finale-mode">
+						<label class="finale-mode-label">Finale Mode</label>
+						<input class="finale-mode" type="checkbox" />
+					</div>
+					<div class="form-option form-option--checkbox">
+						<label class="hide-controls-label">Hide Controls</label>
+						<input class="hide-controls" type="checkbox" />
+					</div>
+					<div class="form-option form-option--checkbox form-option--fullscreen">
+						<label class="fullscreen-label">Fullscreen</label>
+						<input class="fullscreen" type="checkbox" />
+					</div>
+					<div class="form-option form-option--checkbox">
+						<label class="long-exposure-label">Open Shutter</label>
+						<input class="long-exposure" type="checkbox" />
+					</div>
+				</form>
+				<div class="credits">
+					Passionately built by <a href="https://cmiller.tech/" target="_blank">Caleb Miller</a>.
+				</div>
+			</div>
+		</div>
+		
+			<p>
+			angle: <input type='text' id='angle' value='110' onClick="KeyBoardHandler(event);">
+			repeat: <input type='text' id='repeat' value='100' onClick="KeyBoardHandler(event);">
+			length: <input type='text' id='length' value='100' onClick="KeyBoardHandler(event);">
+		</p>
+		<p style="display:none">
+			width: <input type='text' id='input-width' onchange='setXPixels();' >
+			height: <input type='text' id='input-height' onchange='setYPixels();'>
+			render scale: <input type='text' id='input-render-scale' onchange='setRenderScale();'>
+		</p>
+		  <canvas id='turtlecanvas'></canvas>
+		 
+		  <canvas id='imagecanvas' style='display:none'></canvas>
+		
+		<br>
+	  
+			<button onclick='executeCommands();'>Run</button>
+			<button onclick='reset();'>Reset</button>
+			<!-- <button onclick='downloadImage();'>Download Image</button> -->
+			<button onclick='downloadRender();'>Download</button>
+	</div>
+
+ 
+
+
+<div id='code'>
+	<div id='language-reference' style="display:none">// language reference
+
+			forward(distance);
+			right(angle);
+			left(angle);
+			goto(x,y);
+			clear();
+			penup();
+			pendown();
+			reset();
+			angle(angle);
+			width(width);
+			color(r,g,b,a);
+			write(string);
+			n = random(low,high);
+			hideTurtle();
+			showTurtle();
+			redrawOnMove(bool);
+			draw();
+			repeat(n, action);
+			wrap(bool);
+			animate(action,ms);
+
+			//         (Windows)   (OS X)
+			// run:    Ctrl+Enter  Cmd+Enter
+			// reset:  Ctrl+Esc    Cmd+Esc
+	</div>
+
+	<div id='editor' style="display:none">// Write commands here.  For example:
+
+
+			function square(side) {
+
+			//Tue Le 
+			  x = document.getElementById("angle").value;
+			  y = document.getElementById("repeat").value;
+				repeat(y, function () {
+					forward(side);
+					right(x);
+					
+			
+				});
+			}
+
+			 function demo() {
+				hideTurtle();
+				color(0,0,255,1);
+				for(s = 0; s < 300; s += 50) {
+					square(s);
+					left(36);
+				}
+			}  
+
+			<!-- function demo() {
+
+				s = document.getElementById("length").value;
+				hideTurtle();
+				color(0,0,255,1);
+			   
+					square(s);
+				
+			}  -->
+
+
+
+			reset();
+			demo();
+
+	</div>
+</div> 
+
+
+
+<hr>
+
+		<div id='footer'>
+								letue@9999.com
+		</div>
+
+	<script type='text/javascript' src='turtle.js'></script>
+
+	</body>
+</html>
